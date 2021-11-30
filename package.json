@@ -1,0 +1,30 @@
+{
+  "name": "rest-countries",
+  "version": "1.0.0",
+  "description": "Rest Countries Api Consume",
+  "private": true,
+  "scripts": {
+    "dev": "postcss src/css/index.css -o public/compiled.css",
+    "prod": "NODE_ENV=production postcss src/css/index.css -o public/compiled.css"
+  },
+  "author": "Samuel Pacheco Ferreira",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.4.5",
+    "postcss": "^8.4.4",
+    "postcss-cli": "^9.0.2",
+    "postcss-loader": "^6.2.1",
+    "postcss-preset-env": "^7.0.1",
+    "tailwindcss": "^2.2.19"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@webpack-cli/generators": "^2.4.1",
+    "babel-loader": "^8.2.3",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  }
+}
