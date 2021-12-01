@@ -4,7 +4,7 @@
   "description": "Rest Countries Api Consume",
   "private": true,
   "scripts": {
-    "dev": "postcss src/css/index.css -o public/compiled.css",
+    "dev": "postcss --watch src/css/index.css -o public/compiled.css",
     "prod": "NODE_ENV=production postcss src/css/index.css -o public/compiled.css"
   },
   "author": "Samuel Pacheco Ferreira",

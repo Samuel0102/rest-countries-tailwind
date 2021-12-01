@@ -1,4 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+* {
+    font-family: 'Nunito Sans';
+    color: var(--font);
+}
+
+:root{
+    --font: black;
+    --bg-header: white;
+    --bg-body: white;
+}
+
+header{
+    background-color: var(--bg-header);
+}
+
+html{
+    background-color: var(--bg-body);
+}
+
+#search-div, select, article, select option{
+    background-color: var(--bg-header);
+}
+
+.article{
+    @apply w-64;
+}
+
+.country-img{
+    @apply h-36 w-full object-cover rounded-sm;
+}
+
+.country-title{
+    @apply text-lg font-bold mt-3 px-4 lg:px-6 pt-3;
+}
+
+.country-desc{
+    @apply mb-2 px-4 lg:px-6 pb-5;
+}
