@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="compiled.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <title>Rest Countries</title>
+  </head>
+  <body>
+    <header class="py-3">
+      <div class="px-8 md:px-20 flex justify-between items-center">
+        <h1 class="text-lg font-bold"><a href="index.html">Where in the world?</a></h1>
+        <i class="fas fa-moon cursor-pointer" id="theme-btn"
+          ><span> Dark Mode</span></i
+        >
+      </div>
+    </header>
+    <main class="px-5 md:px-20">
+      <div class="flex items-center py-16">
+        <a href="index.html" id="back" class="pl-5 pr-7 py-1 rounded-sm">
+          <i class="fas fa-arrow-left mr-2"></i>
+          Back
+        </a>
+      </div>
+
+      <section
+        id="country"
+        class="flex flex-col lg:flex-row items-start justify-between"
+      >
+        <div id="country-flag">
+          <img id="country-img" class="h-full w-full object-cover" />
+        </div>
+        <article id="country-about" class="relative transform scale-95">
+          <h1 id="country-title" class="font-bold text-2xl my-6"></h1>
+          <ul class="flex flex-col flex-wrap md:max-h-40">
+            <li class="w-64">
+              <strong>Native Name: </strong><span id="native-name"></span>
+            </li>
+            <li class="w-64">
+              <strong>Population: </strong
+              ><span class="c-info" id="population"></span>
+            </li>
+            <li class="w-64">
+              <strong>Region: </strong>
+              <span class="c-info" id="region"></span>
+            </li>
+            <li class="w-64">
+              <strong>Sub Region: </strong
+              ><span id="subregion" class="c-info"></span>
+            </li>
+            <li class="mt-10 md:m-0 w-64">
+              <strong>Capital: </strong>
+              <span class="c-info" id="capital"></span>
+            </li>
+            <li class="w-64">
+              <strong>Top Level Domain: </strong>
+              <span class="c-info" id="topLevelDomain"></span>
+            </li>
+            <li class="w-64">
+              <strong>Currencies: </strong>
+              <span class="c-info" id="currencies"></span>
+            </li>
+            <li class="w-64">
+              <strong>Languages: </strong>
+              <span id="languages"></span>
+            </li>
+          </ul>
+          <div
+            id="border-countries"
+            class="mt-5 flex flex-wrap gap-2 items-center"
+          >
+            <strong>Border Countries:</strong>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="js/country.js" type="module"></script>
+  </body>
+</html>

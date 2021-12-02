@@ -5,17 +5,29 @@
 @tailwind utilities;
 
 
+/*  General styles */
 * {
     font-family: 'Nunito Sans';
     color: var(--font);
+    
 }
 
+strong{
+    font-weight: 600;
+}
+
+li{
+    line-height: 1.9em;
+}
+
+/* Variables */
 :root{
     --font: black;
     --bg-header: white;
     --bg-body: white;
 }
 
+/* Variables use */
 header{
     background-color: var(--bg-header);
 }
@@ -24,12 +36,13 @@ html{
     background-color: var(--bg-body);
 }
 
-#search-div, select, article, select option{
+#search-div, select, article.article, select option, #back, .border-c{
     background-color: var(--bg-header);
 }
 
+/* Tailwind style components */
 .article{
-    @apply w-64;
+    @apply w-64  transform hover:scale-110 transition-all cursor-pointer;
 }
 
 .country-img{
@@ -42,4 +55,17 @@ html{
 
 .country-desc{
     @apply mb-2 px-4 lg:px-6 pb-5;
+}
+
+.border-c{
+    @apply px-4 py-1 rounded-sm;
+}
+
+
+#country-flag{
+    @apply w-full lg:w-5/12 h-56 md:h-72;
+}
+
+#country-about{
+    @apply w-full lg:w-6/12 h-full;
 }

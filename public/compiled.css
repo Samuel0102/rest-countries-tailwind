@@ -29829,16 +29829,30 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/*  General styles */
+
 * {
   font-family: 'Nunito Sans';
   color: var(--font);
 }
+
+strong{
+  font-weight: 600;
+}
+
+li{
+  line-height: 1.9em;
+}
+
+/* Variables */
 
 :root{
   --font: black;
   --bg-header: white;
   --bg-body: white;
 }
+
+/* Variables use */
 
 header{
   background-color: var(--bg-header);
@@ -29848,12 +29862,34 @@ html{
   background-color: var(--bg-body);
 }
 
-#search-div, select, article, select option{
+#search-div, select, article.article, select option, #back, .border-c{
   background-color: var(--bg-header);
 }
 
+/* Tailwind style components */
+
 .article{
   width: 16rem;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.article:hover{
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+}
+
+.article{
+  cursor: pointer;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .country-img{
@@ -29891,6 +29927,42 @@ html{
   .country-desc{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+}
+
+.border-c{
+  border-radius: 0.125rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+#country-flag{
+  height: 14rem;
+  width: 100%;
+}
+
+@media (min-width: 768px){
+  #country-flag{
+    height: 18rem;
+  }
+}
+
+@media (min-width: 1024px){
+  #country-flag{
+    width: 41.666667%;
+  }
+}
+
+#country-about{
+  height: 100%;
+  width: 100%;
+}
+
+@media (min-width: 1024px){
+  #country-about{
+    width: 50%;
   }
 }
 

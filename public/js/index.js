@@ -9,11 +9,17 @@ document.getElementById("theme-btn").addEventListener("click", (ev) => {
 })
 
 document.getElementById("region-filter").addEventListener("change", (ev) => {
-    const value = ev.target.value;
-    controller.listCountries("region", value);
+    controller.listCountries("region", ev.target.value);
 })
 
 document.getElementById("search").addEventListener("keyup", (ev) => {
-    const value = ev.target.value;
-    controller.listCountries("search", value);
+    controller.listCountries("search", ev.target.value);
+})
+
+document.getElementById("countries-list").addEventListener("click", (ev) => {
+    const element = ev.target.closest(".article");
+    if(element !== null){
+        localStorage.setItem(1, element.getAttribute("id"));
+        location.href = "country.html";
+    }
 })
