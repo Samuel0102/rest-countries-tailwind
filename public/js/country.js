@@ -2,6 +2,7 @@ import {Controller} from "./classes.js";
 
 const controller = new Controller();
 controller.showCountry(localStorage[1]);
+controller.setTheme();
 
 document.getElementById("theme-btn").addEventListener("click", (ev) => {
     controller.toggleTheme();
@@ -9,4 +10,5 @@ document.getElementById("theme-btn").addEventListener("click", (ev) => {
 
 document.getElementById("border-countries").addEventListener("click", (ev) => {
     localStorage.setItem(1, ev.target.getAttribute("id"));
+    controller.showCountry(localStorage[1]);
 })

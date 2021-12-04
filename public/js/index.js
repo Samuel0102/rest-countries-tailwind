@@ -1,6 +1,7 @@
 import {Controller} from "./classes.js";
 
 const controller = new Controller();
+controller.setTheme();
 controller.setCountries();
 controller.listCountries();
 

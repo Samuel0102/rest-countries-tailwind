@@ -58,7 +58,7 @@ html{
 }
 
 .border-c{
-    @apply px-4 py-1 rounded-sm;
+    @apply px-4 py-1.5 rounded-sm transform hover:scale-110 transition-all;
 }
 
 

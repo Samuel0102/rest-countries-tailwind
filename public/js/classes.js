@@ -29,11 +29,8 @@ class FilterController {
       (element) => element.region === value
     );
 
-    this.actualFilter = value;
-    if (value === "default") {
-      this.actualFilter = "all";
-      this.filteredArray = countries;
-    }
+    this.actualFilter = value === "default" ? "all" : value;
+    this.filteredArray = value === "default" ? countries : this.filteredArray;
 
     return this.filteredArray;
   }
@@ -56,30 +53,26 @@ class FilterController {
 
   filterCountryBorders(country) {
     const countries = JSON.parse(localStorage[0]);
-    let borders = [];
+    let borders = countries.find((element) => element.name === country).borders;
 
-    countries.forEach((element) => {
-      if (element.name === country) borders = element.borders;
-    });
-    
-    if (borders === undefined) borders = "";
+    borders = !borders ? "" : borders;
+
     borders = countries.filter((element) => {
-      if (borders.indexOf(element.cioc) !== -1) return true;
+      if (borders.indexOf(element.alpha3Code) !== -1) return true;
     });
 
     return borders;
   }
 
-  filterCountryLanguages(country){
+  filterCountryLanguages(country) {
     const countries = JSON.parse(localStorage[0]);
-    let languages = [];
-    countries.forEach((element) => {
-      if (element.name === country) languages = element.languages;
-    });
+    let languages = countries.find(
+      (element) => element.name === country
+    ).languages;
 
-    languages = languages.map(element => element.name);
+    languages = languages.map((element) => element.name);
+
     return languages;
-
   }
 }
 
@@ -107,10 +100,10 @@ class HtmlGenerator {
   }
 
   generateBorderCountries(borderCountries) {
-    this.html = "";
+    this.html = "<strong>Border Countries:</strong>";
     borderCountries.forEach((element) => {
       this.html += `
-        <a href="country.html" id="${element.name}" class="border-c">
+        <a href="#" id="${element.name}" class="border-c">
         ${element.name}
         </a>
       `;
@@ -131,7 +124,6 @@ class Controller {
   setCountries() {
     const data = this.requisition.getResponseData();
     data.then((countries) => {
-      localStorage.clear();
       localStorage.setItem(0, JSON.stringify(countries));
     });
   }
@@ -162,7 +154,12 @@ class Controller {
     this.view.toggleTheme();
   }
 
+  setTheme() {
+    this.view.setTheme();
+  }
+
   showCountry(countryName) {
+    if (!countryName) location.href = "index.html";
     const countrie = JSON.parse(localStorage[0]).find(
       (element) => element.name === countryName
     );
@@ -171,13 +168,11 @@ class Controller {
     const languages = this.filter.filterCountryLanguages(countryName);
     this.view.setHtmlCountry(countrie, languages, bordersHtml);
   }
-
 }
 
 class View {
   constructor() {
-    this.theme = "light";
-    this.countries = "";
+    this.theme = localStorage[2];
     this.requisition = new Requisition();
     this.filter = new FilterController();
   }
@@ -188,38 +183,50 @@ class View {
   }
 
   setHtmlCountry(countrie, languages, bordersHtml) {
-    document
-      .getElementById("country-img")
-      .setAttribute("src", countrie.flag);
-    document.getElementById("country-title").innerHTML = countrie.name;
-    document.getElementById("native-name").innerHTML = countrie.nativeName;
+    const infoElement = document.getElementsByClassName("c-info");
+    document.getElementById("flag").setAttribute("src", countrie.flag);
     document.getElementById("languages").innerHTML = languages.join(", ");
 
-    for (let html of document.getElementsByClassName("c-info")) {
+    for (let html of infoElement) {
       let value = countrie[html.getAttribute("id")];
-      if (html.getAttribute("id") === "currencies") {
-        value = Object.values(value)[0].name;
-      }
       html.innerHTML = value;
     }
 
-    document
-      .getElementById("border-countries")
-      .insertAdjacentHTML("beforeend", bordersHtml);
+    document.getElementById("border-countries").innerHTML = bordersHtml;
+    document.getElementById("currencies").innerHTML = Object.values(
+      countrie.currencies
+    )[0].name;
   }
 
-  toggleTheme() {
+  setTheme() {
     let r = document.querySelector(":root");
-    if (this.theme === "light") {
-      this.theme = "dark";
+    this.theme = localStorage[2];
+
+    if (this.theme === "dark") {
       r.style.setProperty("--font", "white");
       r.style.setProperty("--bg-header", "#2B3743");
       r.style.setProperty("--bg-body", "#202D36");
     } else {
-      this.theme = "light";
       r.style.setProperty("--font", "black");
       r.style.setProperty("--bg-header", "white");
       r.style.setProperty("--bg-body", "white");
+    }
+  }
+
+  toggleTheme() {
+    let r = document.querySelector(":root");
+    this.theme = localStorage[2];
+
+    if (this.theme === "dark") {
+      localStorage.setItem(2, "light");
+      r.style.setProperty("--font", "black");
+      r.style.setProperty("--bg-header", "white");
+      r.style.setProperty("--bg-body", "white");
+    } else {
+      localStorage.setItem(2, "dark");
+      r.style.setProperty("--font", "white");
+      r.style.setProperty("--bg-header", "#2B3743");
+      r.style.setProperty("--bg-body", "#202D36");
     }
   }
 }

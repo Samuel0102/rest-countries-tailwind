@@ -35,21 +35,21 @@
         class="flex flex-col lg:flex-row items-start justify-between"
       >
         <div id="country-flag">
-          <img id="country-img" class="h-full w-full object-cover" />
+          <img id="flag" class="h-full w-full object-cover transform hover:scale-110 transition-all"/>
         </div>
         <article id="country-about" class="relative transform scale-95">
-          <h1 id="country-title" class="font-bold text-2xl my-6"></h1>
+          <h1 id="name" class="font-bold text-2xl my-6 c-info"></h1>
           <ul class="flex flex-col flex-wrap md:max-h-40">
             <li class="w-64">
-              <strong>Native Name: </strong><span id="native-name"></span>
+              <strong>Native Name: </strong><span class="c-info" id="nativeName"></span>
             </li>
             <li class="w-64">
               <strong>Population: </strong
-              ><span class="c-info" id="population"></span>
+              ><span id="population" class="c-info"></span>
             </li>
             <li class="w-64">
               <strong>Region: </strong>
-              <span class="c-info" id="region"></span>
+              <span id="region" class="c-info"></span>
             </li>
             <li class="w-64">
               <strong>Sub Region: </strong
@@ -57,15 +57,15 @@
             </li>
             <li class="mt-10 md:m-0 w-64">
               <strong>Capital: </strong>
-              <span class="c-info" id="capital"></span>
+              <span id="capital" class="c-info"></span>
             </li>
             <li class="w-64">
               <strong>Top Level Domain: </strong>
-              <span class="c-info" id="topLevelDomain"></span>
+              <span id="topLevelDomain" class="c-info"></span>
             </li>
             <li class="w-64">
               <strong>Currencies: </strong>
-              <span class="c-info" id="currencies"></span>
+              <span id="currencies"></span>
             </li>
             <li class="w-64">
               <strong>Languages: </strong>
@@ -76,7 +76,6 @@
             id="border-countries"
             class="mt-5 flex flex-wrap gap-2 items-center"
           >
-            <strong>Border Countries:</strong>
           </div>
         </article>
       </section>
