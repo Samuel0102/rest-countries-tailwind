@@ -16,13 +16,15 @@
   <body>
     <header class="py-3">
       <div class="px-8 md:px-20 flex justify-between items-center">
-        <h1 class="text-lg font-bold"><a href="index.html">Where in the world?</a></h1>
+        <h1 class="text-lg font-bold">
+          <a href="index.html">Where in the world?</a>
+        </h1>
         <i class="fas fa-moon cursor-pointer" id="theme-btn"
           ><span> Dark Mode</span></i
         >
       </div>
     </header>
-    <main class="px-5 md:px-20">
+    <main class="px-5 sm:px-16 md:px-20">
       <div class="flex items-center py-16">
         <a href="index.html" id="back" class="pl-5 pr-7 py-1 rounded-sm">
           <i class="fas fa-arrow-left mr-2"></i>
@@ -32,16 +34,17 @@
 
       <section
         id="country"
-        class="flex flex-col lg:flex-row items-start justify-between"
+        class="flex flex-col lg:flex-row flex-wrap items-start justify-between"
       >
         <div id="country-flag">
-          <img id="flag" class="h-full w-full object-cover transform hover:scale-110 transition-all"/>
+          <img id="flag" />
         </div>
-        <article id="country-about" class="relative transform scale-95">
-          <h1 id="name" class="font-bold text-2xl my-6 c-info"></h1>
+        <article id="country-about">
+          <h1 id="name" class="font-bold text-2xl my-6 lg:mt-0 c-info"></h1>
           <ul class="flex flex-col flex-wrap md:max-h-40">
             <li class="w-64">
-              <strong>Native Name: </strong><span class="c-info" id="nativeName"></span>
+              <strong>Native Name: </strong
+              ><span class="c-info" id="nativeName"></span>
             </li>
             <li class="w-64">
               <strong>Population: </strong
@@ -55,7 +58,7 @@
               <strong>Sub Region: </strong
               ><span id="subregion" class="c-info"></span>
             </li>
-            <li class="mt-10 md:m-0 w-64">
+            <li class="mt-6 md:m-0 w-64">
               <strong>Capital: </strong>
               <span id="capital" class="c-info"></span>
             </li>
@@ -75,8 +78,7 @@
           <div
             id="border-countries"
             class="mt-5 flex flex-wrap gap-2 items-center"
-          >
-          </div>
+          ></div>
         </article>
       </section>
     </main>

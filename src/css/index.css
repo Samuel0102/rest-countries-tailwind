@@ -1,71 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 /*  General styles */
 * {
-    font-family: 'Nunito Sans';
-    color: var(--font);
-    
+  font-family: "Nunito Sans";
+  color: var(--font);
 }
 
-strong{
-    font-weight: 600;
+strong {
+  font-weight: 600;
 }
 
-li{
-    line-height: 1.9em;
+li {
+  line-height: 1.9em;
 }
 
 /* Variables */
-:root{
-    --font: black;
-    --bg-header: white;
-    --bg-body: white;
+:root {
+  --font: black;
+  --bg-header: white;
+  --bg-body: white;
 }
 
 /* Variables use */
-header{
-    background-color: var(--bg-header);
+header {
+  background-color: var(--bg-header);
 }
 
-html{
-    background-color: var(--bg-body);
+html {
+  background-color: var(--bg-body);
 }
 
-#search-div, select, article.article, select option, #back, .border-c{
-    background-color: var(--bg-header);
+#search-div,
+select,
+article.article,
+select option,
+#back,
+.border-c {
+  background-color: var(--bg-header);
 }
 
 /* Tailwind style components */
-.article{
-    @apply w-64  transform hover:scale-110 transition-all cursor-pointer;
+.article {
+  @apply w-64 transform hover:scale-110 transition-all cursor-pointer;
 }
 
-.country-img{
-    @apply h-36 w-full object-cover rounded-sm;
+.country-img {
+  @apply h-36 w-full object-cover rounded-sm;
 }
 
-.country-title{
-    @apply text-lg font-bold mt-3 px-4 lg:px-6 pt-3;
+.country-title {
+  @apply text-lg font-bold mt-3 px-4 lg:px-6 pt-3;
 }
 
-.country-desc{
-    @apply mb-2 px-4 lg:px-6 pb-5;
+.country-desc {
+  @apply mb-2 px-4 lg:px-6 pb-5;
 }
 
-.border-c{
-    @apply px-4 py-1.5 rounded-sm transform hover:scale-110 transition-all;
+.border-c {
+  @apply px-4 py-1.5 rounded-sm transform hover:scale-110 transition-all;
 }
 
-
-#country-flag{
-    @apply w-full lg:w-5/12 h-56 md:h-72;
+#flag {
+  @apply h-full w-full object-cover transform md:hover:scale-110 transition-all;
 }
 
-#country-about{
-    @apply w-full lg:w-6/12 h-full;
+#country-flag {
+  @apply w-full lg:w-5/12 h-60 sm:h-80 md:h-72;
+}
+
+#country-about {
+  @apply w-full lg:w-6/12 h-full transform md:hover:scale-105 transition-all;
 }

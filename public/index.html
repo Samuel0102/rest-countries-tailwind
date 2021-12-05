@@ -16,7 +16,9 @@
   <body>
     <header class="py-3">
       <div class="px-8 md:px-20 flex justify-between items-center">
-        <h1 class="text-lg font-bold"><a href="index.html">Where in the world?</a></h1>
+        <h1 class="text-lg font-bold">
+          <a href="index.html">Where in the world?</a>
+        </h1>
         <i class="fas fa-moon cursor-pointer" id="theme-btn"
           ><span> Dark Mode</span></i
         >
@@ -41,11 +43,15 @@
             <input
               id="search"
               name="search"
+              autocomplete="off"
               placeholder="  Search for a country..."
-              class="bg-transparent ml-2"
+              class="bg-transparent ml-2 outline-none"
             />
           </div>
-          <select id="region-filter" class="mt-2 sm:m-0 py-2 px-5 rounded-sm">
+          <select
+            id="region-filter"
+            class="mt-2 sm:m-0 py-2 px-5 rounded-sm outline-none"
+          >
             <option value="default">Filter by region</option>
             <option value="Americas">Americas</option>
             <option value="Africa">Africa</option>
@@ -62,7 +68,7 @@
           md:px-20
           flex flex-wrap
           justify-center
-          md:justify-between
+          md:justify-evenly
           gap-x-4 gap-y-10
         "
         id="countries-list"
