@@ -73,5 +73,5 @@ select option,
 }
 
 #country-about {
-  @apply w-full lg:w-6/12 h-full transform md:hover:scale-105 transition-all;
+  @apply w-full lg:w-6/12 h-full;
 }
