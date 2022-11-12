@@ -4,7 +4,6 @@ import { Controller } from "./classes.js";
 const controller = new Controller();
 controller.setTheme();
 controller.setCountries();
-controller.listCountries();
 
 // Verificação de clique para troca de tema
 document.getElementById("theme-btn").addEventListener("click", (ev) => {

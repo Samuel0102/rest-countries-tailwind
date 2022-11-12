@@ -166,6 +166,7 @@ class Controller {
     const data = this.requisition.makeRequisition();
     data.then((countries) => {
       localStorage.setItem(0, JSON.stringify(countries));
+      this.listCountries("default", "default", countries);
     });
   }
 
@@ -174,7 +175,7 @@ class Controller {
    * @param {string} [filter] - Filtro de listagem(região, nome)
    * @param {string} [value] - Valor do filtro
    */
-  listCountries(filter = "", value = "") {
+  listCountries(filter = "", value = "", countries = {}) {
     let htmlBody = "";
     let filtered = "";
     switch (filter) {
@@ -187,9 +188,7 @@ class Controller {
         htmlBody = this.generator.generateCountriesHtml(filtered);
         break;
       default:
-        htmlBody = this.generator.generateCountriesHtml(
-          JSON.parse(localStorage[0])
-        );
+        htmlBody = this.generator.generateCountriesHtml(countries);
         break;
     }
 
