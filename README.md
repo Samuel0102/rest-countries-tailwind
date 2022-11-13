@@ -1,6 +1,5 @@
 # Rest Countries
 Project for consuming of the Rest Countries API, made with TailwindCSS with the UI of the Front-End Mentor Platform.  
-:link: https://countriesrestapp.netlify.app/
 
 ## About the project
 
