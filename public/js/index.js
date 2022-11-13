@@ -1,26 +1,26 @@
 import { Controller } from "./classes.js";
 
-// Instanciação, definição de tema, definição de países e listagem
+// Main class instance, theme definition and countries load
 const controller = new Controller();
 controller.setTheme();
 controller.setCountries();
 
-// Verificação de clique para troca de tema
+// Checking the user event to change the theme
 document.getElementById("theme-btn").addEventListener("click", (ev) => {
   controller.toggleTheme();
 });
 
-// Verificação de filtragem por região
+// Checking the user event to filter the countries by region
 document.getElementById("region-filter").addEventListener("change", (ev) => {
   controller.listCountries("region", ev.target.value);
 });
 
-// Verificação de busca por nome
+// Checking the user event to search a country by the name
 document.getElementById("search").addEventListener("keyup", (ev) => {
   controller.listCountries("search", ev.target.value);
 });
 
-// Verificação de clique para visualização de país específico
+// Setting a specific country to the local storage and load of the country page
 document.getElementById("countries-list").addEventListener("click", (ev) => {
   const element = ev.target.closest(".article");
   if (element !== null) {

@@ -1,16 +1,16 @@
 import { Controller } from "./classes.js";
 
-// Instanciação, visualização de País e definição de tema
+// Main class instance, theme definition and country loading
 const controller = new Controller();
 controller.showCountry(localStorage[1]);
 controller.setTheme();
 
-// Verificação de clique para troca de tema
+// Checking the user event to change the theme
 document.getElementById("theme-btn").addEventListener("click", (ev) => {
   controller.toggleTheme();
 });
 
-// Verificação de clique para visualização de país fronteiriço
+// Checking the user event to load a bordering country
 document.getElementById("border-countries").addEventListener("click", (ev) => {
   localStorage.setItem(1, ev.target.getAttribute("id"));
   controller.showCountry(localStorage[1]);

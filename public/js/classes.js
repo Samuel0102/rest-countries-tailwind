@@ -1,14 +1,14 @@
-/** Classe que representa uma Requisição */
+/** This class represents the requisition to the API */
 class Requisition {
-  /** Cria os dados básicos de uma requisição */
+  /** Constructor */
   constructor() {
     this.url = "https://restcountries.com/v2/all";
     this.responseData = "";
   }
 
   /**
-   * Método para retorno da resposta da requisição
-   * @returns {promise} responseData - retorna uma promise da requisição
+   * Method for the return of the promise(API Response)
+   * @returns {promise} responseData - promise of the api response
    */
   async makeRequisition() {
     let response = await fetch(this.url);
@@ -18,18 +18,18 @@ class Requisition {
   }
 }
 
-/** Classe que representa um controlador de Filtragem */
+/** This class handles the filtering processe */
 class FilterController {
-  /**  Cria um filtrador */
+  /** Constructor  */
   constructor() {
     this.filteredArray = [];
     this.actualFilter = "all";
   }
 
   /**
-   * Método para filtrar por região
-   * @param {string} value - Região para filtrar os países
-   * @returns {array} - Array contendo os países filtrados
+   * Method for the filtering of countries by a region
+   * @param {string} [value] - region to filter
+   * @returns {array} filteredArray - filtered array by the region
    */
   filterByRegion(value) {
     const countries = JSON.parse(localStorage[0]);
@@ -44,9 +44,9 @@ class FilterController {
   }
 
   /**
-   * Método para filtrar por nome de país
-   * @param {string} value - Busca para filtrar os países
-   * @returns {array} - Array contendo os países filtrados
+   * Method for the filtering of countries by the name
+   * @param {string} [value] - name to filter
+   * @returns {array} filteredArray - filtered array by the name
    */
   filterBySearch(value) {
     const countries = JSON.parse(localStorage[0]);
@@ -65,9 +65,9 @@ class FilterController {
   }
 
   /**
-   * Método para filtrar apenas países fronteiriços de um país
-   * @param {object} country - País a ser filtrado
-   * @returns {array} - Array contendo os países fronteiriços
+   * Method to get the country borders
+   * @param {object} [country] - country
+   * @returns {array} borders - array with the country borders 
    */
   filterCountryBorders(country) {
     const countries = JSON.parse(localStorage[0]);
@@ -83,9 +83,9 @@ class FilterController {
   }
 
   /**
-   * Método para filtrar apenas as línguas de determinado país
-   * @param {object} country - País a ser filtrado
-   * @returns {array} - Array contendo as línguas do país
+   * Method to get the languages of the country
+   * @param {object} [country] - country
+   * @returns {array} languages - array with the country languages
    */
   filterCountryLanguages(country) {
     const countries = JSON.parse(localStorage[0]);
@@ -99,17 +99,17 @@ class FilterController {
   }
 }
 
-/** Classe que representa um gerador de código HTML*/
+/** This class handles the HTML5 structure generating process */
 class HtmlGenerator {
-  /** Cria o gerador */
+  /** Constructor */
   constructor() {
     this.html = "";
   }
 
   /**
-   * Método para gerar código HTML para listagem dos países
-   * @param {array} countries - Array de países
-   * @returns {string} html - String contendo o código HTML
+   * Method to generate the HTML5 structure for all the countries
+   * @param {array} [countries] - array with the data of all the countries
+   * @returns {string} html - string with the HTML5 structure(filled with the data of countries)
    */
   generateCountriesHtml(countries) {
     this.html = "";
@@ -130,9 +130,9 @@ class HtmlGenerator {
   }
 
   /**
-   * Método para gerar código HTML para os links de países fronteiriços
-   * @param {array} borderCountries - Array dos países fronteiriços
-   * @returns {string} html - String contendo código HTML
+   * Method to generate the HTML5 structure for the country borders
+   * @param {array} [borderCountries] - array with the country borders
+   * @returns {string} html - string with the HTML5 structure(filled with the data of country borders)
    */
   generateBorderCountries(borderCountries) {
     this.html = "<strong>Border Countries:</strong>";
@@ -148,9 +148,9 @@ class HtmlGenerator {
   }
 }
 
-/** Classe representando um controlador geral */
+/** This class handles the controller*/
 class Controller {
-  /** Cria o controlador */
+  /** Constructor */
   constructor() {
     this.view = new View();
     this.requisition = new Requisition();
@@ -159,8 +159,7 @@ class Controller {
   }
 
   /**
-   * Método responsável por definir a lista de países com base
-   * na requisição
+   * Method to get all the countries and set a local storage with the data(used in filtering process)
    */
   setCountries() {
     const data = this.requisition.makeRequisition();
@@ -171,9 +170,10 @@ class Controller {
   }
 
   /**
-   * Método para listagem dos países
-   * @param {string} [filter] - Filtro de listagem(região, nome)
-   * @param {string} [value] - Valor do filtro
+   * Method to call the HTML5 generating process and the process to set HTML5 content
+   * @param {string} [filter] - filter value for region or name filtering process
+   * @param {string} [value] - value of the filter
+   * @param {array} [countries] - countries list, for the first time loading of the page
    */
   listCountries(filter = "", value = "", countries = {}) {
     let htmlBody = "";
@@ -195,19 +195,19 @@ class Controller {
     this.view.setCountriesListHtml(htmlBody);
   }
 
-  /** Método para troca de tema */
+  /** Method to call the toggling theme process */
   toggleTheme() {
     this.view.toggleTheme();
   }
 
-  /** Método para definição do tema ao carregar das páginas */
+  /** Method to call the setting of the theme process on the first load of the page */
   setTheme() {
     this.view.setTheme();
   }
 
   /**
-   * Método para visualização de país específico
-   * @param {string} countryName - Nome do país, obtido por localStorage
+   * Method to make the process of load a specific country
+   * @param {string} [countryName] - name of the country to be loaded
    */
   showCountry(countryName) {
     if (!countryName) location.href = "index.html";
@@ -221,16 +221,16 @@ class Controller {
   }
 }
 
-/** Classe representando a camada de visualização */
+/** This class handles the processes related to loading of the visualization of the page */
 class View {
-  /** Cria a camada de visualização */
+  /** Constructor */
   constructor() {
     this.theme = localStorage[2];
   }
 
   /**
-   * Método para inserção de código HTML da lista de paises no documento HTML
-   * @param {string} htmlBody - String contendo o código HTML
+   * Method to set the generated HTML5 structure(with content of the countries) to the page
+   * @param {string} [htmlBody] - string with the HTML5 structure(with content of the countries) 
    */
   setCountriesListHtml(htmlBody) {
     const countriesSection = document.getElementById("countries-list");
@@ -238,10 +238,10 @@ class View {
   }
 
   /**
-   * Método para definição de código HTML para visualização de país específico
-   * @param {object} country - País a ser visualizado
-   * @param {array} languages - Array das línguas do país
-   * @param {string} bordersHtml - Código HTML dos países fronteiriços
+   * Method to set the generated HTML5 structure(with content of the specific country) to the page
+   * @param {object} [country] - country
+   * @param {array} [languages] - languages of the country
+   * @param {string} [bordersHtml] - country borders
    */
   setCountryHtml(country, languages, bordersHtml) {
     const infoElement = document.getElementsByClassName("c-info");
@@ -260,7 +260,7 @@ class View {
   }
 
   /**
-   * Método para definição do tema ao carregar das páginas
+   * Method to set the theme on the first load of the page
    */
   setTheme() {
     let r = document.querySelector(":root");
@@ -278,7 +278,7 @@ class View {
   }
 
   /**
-   * Método para mudança de tema da página
+   * Method to toggle the theme of the page
    */
   toggleTheme() {
     let r = document.querySelector(":root");
