@@ -56,7 +56,7 @@ Project implementation of the Front-End Mentor challenge. With a focus on API co
 ### Project Origin
 * Front-End Mentor Challenge
 
-### Principais dificuldades
+### Main Challenges of the project
 * API Consume
 * Filtering
 
